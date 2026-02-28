@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Nish</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff0f5;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 { color: #d02a50; font-size: 2rem; margin-bottom: 40px; padding: 0 20px; }
+        .container { position: relative; width: 100%; height: 300px; }
+        
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            touch-action: manipulation;
+        }
+
+        #yesBtn { background-color: #ff69b4; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        #noBtn {
+            background-color: #e0e0e0;
+            color: #666;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100px;
+            transition: 0.1s;
+        }
+
+        #success {
+            display: none;
+            font-size: 2.5rem;
+            color: #d02a50;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="quiz">
+        <h1>I’m sorry nish 🥺</h1>
+        <div class="container">
+            <button id="yesBtn" onclick="forgiven()">1) i forgive u</button>
+            <button id="noBtn" onmouseover="move()" ontouchstart="move()">2) I don’t forgive u</button>
+        </div>
+    </div>
+
+    <div id="success">thank you nish 😭❤️</div>
+
+    <script>
+        function move() {
+            const btn = document.getElementById('noBtn');
+            // Keeps the button within the visible screen area
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+            btn.style.transform = 'none'; // Removes the initial centering
+        }
+
+        function forgiven() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
